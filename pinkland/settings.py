@@ -25,7 +25,7 @@ SECRET_KEY = 'yw1z0#gu03n+pv(@wycb_tqp%l9a+%&*=ue616+72$6ngxqusb'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['latryond.pythonanywhere.com']
 
 
 # Application definition
