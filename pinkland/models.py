@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
+from django.utils.safestring import mark_safe
 
 class Product(models.Model):
     category_choice=(
@@ -24,11 +25,17 @@ class Product(models.Model):
     )
     list_display = ('name', 'category' )
     name = models.CharField( max_length = 30 )
-    category = models.CharField( max_length = 20,choices=category_choice )
+    category = models.CharField( max_length = 100,choices=category_choice )
     price = models.DecimalField( max_digits=19, decimal_places=10 )
     discount = models.IntegerField(default=0)
-    description = models.CharField( max_length=300, help_text='Description')
+    description = models.TextField( max_length=300, help_text='Description Maximum 300 words', blank=True)
+    image = models.ImageField(upload_to ='media',default='http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png')
     is_sale = False
+    
+    def preview_photo(self):
+        return mark_safe('<img src="{}" style="width:50%" />'.format(self.image.url))
+    preview_photo.short_description = 'Image'
+    preview_photo.allow_tags = True
 
     def __str__(self):
         return self.name

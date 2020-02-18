@@ -25,19 +25,20 @@ SECRET_KEY = 'yw1z0#gu03n+pv(@wycb_tqp%l9a+%&*=ue616+72$6ngxqusb'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['latryond.pythonanywhere.com']
+ALLOWED_HOSTS = ['www.pinkland.com.hk']
 
 
 # Application definition
 
-INSTALLED_APPS = [
+INSTALLED_APPS =[
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-]
+    'pinkland',
+    ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -73,16 +74,15 @@ WSGI_APPLICATION = 'pinkland.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
+# https://docs.djangoproject.com/en/3.0/ref/settings/#databas#es
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'rc11270828',
-        'HOST': 'localhost',
-        'PORT': '',
+        'USER': 'super',
+        'PASSWORD': 'post55#Gre12',
+        'HOST': 'latryond-1480.postgres.pythonanywhere-services.com',
+        'PORT': '11480',
     }
 }
 
@@ -122,4 +122,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static/' 
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
