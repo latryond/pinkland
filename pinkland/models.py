@@ -26,10 +26,10 @@ class Product(models.Model):
     list_display = ('name', 'category' )
     name = models.CharField( max_length = 30 )
     category = models.CharField( max_length = 100,choices=category_choice )
-    price = models.DecimalField( max_digits=19, decimal_places=10 )
+    price = models.DecimalField( max_digits=7, decimal_places=2 )
     discount = models.IntegerField(default=0)
     description = models.TextField( max_length=300, help_text='Description Maximum 300 words', blank=True)
-    image = models.ImageField(upload_to ='media',default='http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png')
+    ProductImages = None
     is_sale = False
     
     def preview_photo(self):
@@ -40,3 +40,6 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+class ProductImage(models.Model):
+    product_id = models.ForeignKey('Product',on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='media', blank=True)
