@@ -15,11 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from pinkland.views import HomePageView
+from pinkland.views import HomePageView, ProductPageView, ContactUsPageView, AboutUsPageView
 from django.conf import settings
 from django.conf.urls.static import static
+import logging
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomePageView.as_view(), name='home'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('product.html', ProductPageView.as_view(), name='product'),
+    path('contactus.html', ContactUsPageView.as_view(), name='contactus'),
+    path('aboutus.html', AboutUsPageView.as_view(), name='aboutus'),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# if settings.DEBUG:
+#     urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
+#     urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root= settings.STATIC_ROOT)

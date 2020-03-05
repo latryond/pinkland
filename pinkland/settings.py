@@ -25,7 +25,7 @@ SECRET_KEY = 'yw1z0#gu03n+pv(@wycb_tqp%l9a+%&*=ue616+72$6ngxqusb'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['www.pinkland.com.hk']
+ALLOWED_HOSTS = ['www.pinkland.com.hk','localhost']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS =[
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'sass_processor',
     'pinkland',
     ]
 
@@ -50,7 +51,22 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'sass_processor.finders.CssFinder',
+]
+
 ROOT_URLCONF = 'pinkland.urls'
+
+# read: filename starts with an underscore and is of type scss or sass
+SASS_PROCESSOR_AUTO_INCLUDE = False
+
+SASS_PROCESSOR_INCLUDE_FILE_PATTERN = r'^.+\.scss$'
+
+SASS_PRECISION = 8
+SASS_OUTPUT_STYLE = 'compact'
+SASS_PROCESSOR_ENABLED = True
 
 TEMPLATES = [
     {
@@ -75,14 +91,24 @@ WSGI_APPLICATION = 'pinkland.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databas#es
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'postgres',
+#         'USER': 'super',
+#         'PASSWORD': 'post55#Gre12',
+#         'HOST': 'latryond-1480.postgres.pythonanywhere-services.com',
+#         'PORT': '11480',
+#     }
+# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'postgres',
-        'USER': 'super',
-        'PASSWORD': 'post55#Gre12',
-        'HOST': 'latryond-1480.postgres.pythonanywhere-services.com',
-        'PORT': '11480',
+        'USER': 'postgres',
+        'PASSWORD': 'rc11270828',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -124,5 +150,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/' 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+SASS_PROCESSOR_INCLUDE_DIRS = [
+    os.path.join(BASE_DIR, 'static/scss'),
+]

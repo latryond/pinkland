@@ -25,6 +25,8 @@ class Product(models.Model):
     )
     list_display = ('name', 'category' )
     name = models.CharField( max_length = 30 )
+    thumbnail = models.ImageField(
+        upload_to='../media/', default='/media/low-poly-texture-80.png')
     category = models.CharField( max_length = 100,choices=category_choice )
     price = models.DecimalField( max_digits=7, decimal_places=2 )
     discount = models.IntegerField(default=0)
