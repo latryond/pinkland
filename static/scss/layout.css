@@ -1,0 +1,31 @@
+body { margin: 0; font-family: "Montserrat"; background-image: url("../images/pinkpoly.png"); background-size: cover; }
+
+.header { box-shadow: 0px -5px 30px pink; background: rgba(255, 255, 255, 0.7); display: flex; }
+
+.navLeft, .navRight, .center, .logo { display: -webkit-box; display: flex; -webkit-box-align: center; align-items: center; -webkit-box-pack: center; justify-content: center; }
+
+.nav { display: -webkit-box; display: flex; -webkit-box-align: center; align-items: center; -webkit-box-pack: center; justify-content: center; -webkit-box-pack: justify; justify-content: space-between; padding: 10px 20px; }
+
+.navLeft > * { margin-right: 12px; }
+
+.navLeft a { text-decoration: none; font-size: 14px; color: #aeeeee; }
+
+.navRight a { margin-left: 30px; padding-top: 5px; }
+
+.center { padding: 5px 10px; flex: 1; }
+
+.center > * { font-weight: 400; font-size: 16px; text-decoration: none; width: 25%; display: flex; justify-content: space-evenly; color: #5664ad; }
+
+ul li { list-style: none; }
+
+div.row { display: flex; flex-direction: row; }
+
+div.col { display: flex; flex-direction: column; }
+
+div.line-r { position: relative; }
+
+div.line-r:after { content: ""; position: absolute; background-color: #d3dbed; height: 90%; align-self: center; width: 2px; right: 0; }
+
+.custom-select-option { padding: 10px; display: flex; justify-content: flex-start; align-items: center; border-bottom: solid 1px grey; height: 50px; }
+
+/*# sourceMappingURL=layout.css.map */

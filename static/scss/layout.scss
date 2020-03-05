@@ -1,0 +1,11 @@
+ul li {
+    background-color: red($color: #000000);
+    list-style:none;
+}
+div {
+ width : 10px;
+ height: 20px;
+ &.col{
+    color:red;
+ }
+}
