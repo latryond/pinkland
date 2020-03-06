@@ -1,28 +1,30 @@
 {% extends "base.html" %}
+{% load static %}
+
 {% block content %}
 
 <div class="container-fluid p-3" style="background:white;">
 <div class="row">
-    <div class="col col-12 col-lg-4 col-md-12 col-sm-12 ">
+    <div class="col col-12 col-lg-3 col-md-12 col-sm-12 ">
         <div class="input-group m-2">
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="far fa-gem"></i></span>
             </div>
             <div name="gem" class="form-control d-flex " roll="button" style="position:relative;align-items:center;justify-content:flex-end;" data-toggle="collapse" data-target="#collapse_type_filter" aria-expanded="false" aria-controls="collapse_type_filter">
-            <div id="type_filter" style="position:absolute;left:0;padding:10px;">All</div>
+            <div id="type_filter" style="position:absolute;left:0;padding:10px;">全部</div>
             <ul style="padding:0;text-overflow: ellipsis; z-index: 10; position: absolute; top: calc(1.5em + .75rem + 2px); width: 100%; right: 0;  background: white; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px; max-height: 250px; overflow-y: scroll;box-shadow: 0px 8px 15px #6e6e6e;" class="collapse" id="collapse_type_filter"> 
                 {% for t in types %}
-                    <li class="custom-select-option">{{t}}</li>
+                    <option class="custom-select-option" data-target="type" value="{{t}}">{{t}}</option>
                 {% endfor %}
             </ul>
             <i class="fas fa-caret-down"></i>
             </div>
-
+            
         </div>
 
     </div>
     
-    <div class="col col-12  col-lg-4 col-md-12col-sm--12 ">
+    <div class="col col-12  col-lg-3 col-md-12 col-sm-12 ">
         <div class="input-group m-2">
             <div class="input-group-prepend">
                 <span class="input-group-text">
@@ -30,10 +32,10 @@
                 </span>
             </div>
             <div name="gem" class="form-control d-flex " roll="button" style="position:relative;align-items:center;justify-content:flex-end;" data-toggle="collapse" data-target="#collapse_part_filter" aria-expanded="false" aria-controls="collapse_part_filter">
-            <div id="type_filter" style="position:absolute;left:0;padding:10px;">All</div>
+            <div id="part_filter" style="position:absolute;left:0;padding:10px;">全部</div>
             <ul style="padding:0;text-overflow: ellipsis; z-index: 10; position: absolute; top: calc(1.5em + .75rem + 2px); width: 100%; right: 0;  background: white; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px; max-height: 250px; overflow-y: scroll;box-shadow: 0px 8px 15px #6e6e6e;"  class="collapse" id="collapse_part_filter"> 
                 {% for p in parts %}
-                    <li class="custom-select-option">{{p}}</li>
+                    <li class="custom-select-option part">{{p}}</li>
                 {% endfor %}
             </ul>
             <i class="fas fa-caret-down"></i>
@@ -42,43 +44,69 @@
         </div>
 
     </div>
-        <div class="col col-12  col-lg-4 col-md-12col-sm--12 ">
-        <div class="input-group m-2">
-            <div class="input-group-prepend">
-                <span class="input-group-text">
-                    <i class="fas fa-thumbs-up"></i>
-                </span>
-            </div>
-            <div name="gem" class="form-control d-flex " roll="button" style="position:relative;align-items:center;justify-content:flex-end;" data-toggle="collapse" data-target="#collapse_function_filter" aria-expanded="false" aria-controls="collapse_function_filter">
-            <div id="function_filter" style="position:absolute;left:0;padding:10px;">All</div>
-            <ul style="padding:0;text-overflow: ellipsis; z-index: 10; position: absolute; top: calc(1.5em + .75rem + 2px); width: 100%; right: 0;  background: white; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px; max-height: 250px; overflow-y: scroll;box-shadow: 0px 8px 15px #6e6e6e;" class="collapse" id="collapse_function_filter"> 
-                {% for f in functions %}
-                <li class="custom-select-option">{{f}}</li>
-                {% endfor %}
-            </ul>
-            <i class="fas fa-caret-down"></i>
-            </div>
+        <div class="col col-12  col-lg-3 col-md-12 col-sm-12">
+            <div class="input-group m-2">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fas fa-thumbs-up"></i>
+                    </span>
+                </div>
+                <div name="gem" class="form-control d-flex " roll="button" style="position:relative;align-items:center;justify-content:flex-end;" data-toggle="collapse" data-target="#collapse_function_filter" aria-expanded="false" aria-controls="collapse_function_filter">
+                <div id="function_filter" style="position:absolute;left:0;padding:10px;">全部</div>
+                <ul style="padding:0;text-overflow: ellipsis; z-index: 10; position: absolute; top: calc(1.5em + .75rem + 2px); width: 100%; right: 0;  background: white; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px; max-height: 250px; overflow-y: scroll;box-shadow: 0px 8px 15px #6e6e6e;" class="collapse" id="collapse_function_filter"> 
+                    {% for f in functions %}
+                    <li class="custom-select-option">{{f}}</li>
+                    {% endfor %}
+                </ul>
+                <i class="fas fa-caret-down"></i>
+                </div>
 
         </div>
-
+        <div class="col col-12  col-lg-3 col-md-12 col-sm-12 ">
+            <button type="button" id="submit" class="btn btn-primary">Search</button>
+        </div>
     </div>
 
 </div>
     <div class="row">
         <div class="container-fluid">
             <div class="row p-3 justify-content-center">
-                {% for p in products %}
-                    <div class="card col-4 mx-4 my-3 py-2 col-md-3" style="">
+                {% for p in page_obj %}
+                    <div class="card col-5 mx-3 my-3 py-2 col-md-3 col-sm-5" style="">
                     <img src="{{p.thumbnail}}" class="card-img-top" style="object-fit: scale-down;height:200px;" alt="Product image">
                     <div class="card-body">
                         <h5 class="card-title">{{p.name}}</h5>
                         <p class="card-text"></p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <a href="{% url 'product_detail' p.id %}" class="btn btn-primary">Details</a>
                     </div>
                     </div>
                     
                 {% endfor %}
+
             </div>
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        {% if page_obj.has_previous %}
+                            <li class="page-item"><a class="page-link" href="?page=1">&laquo; first</a></li>
+                            {% comment %} <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">previous</a></li> {% endcomment %}
+                        {% endif %}
+                        {% for page in page_obj.paginator.page_range %}
+                            {% if page_obj.number == page %}
+                                <li class="page-item active" aria-current="page"><a class="page-link" href="?page={{page}}">{{page}} <span class="sr-only">(current)</span></a></li>
+                            {% else %}
+                                <li class="page-item"><a class="page-link" href="?page={{page}}">{{page}}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        {% comment %} <span class="current">
+                            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                        </span> {% endcomment %}
+                        {% if page_obj.has_next %}
+                            {% comment %} <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">next</a></li> {% endcomment %}
+                            <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a></li>  
+                        {% endif %}
+                        
+                    </ul>
+                </nav>
         </div>
     </div>
 

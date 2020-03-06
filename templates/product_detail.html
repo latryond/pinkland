@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div class="slider-for">
+                <div>your content</div>
+                <div>your content</div>
+                <div>your content</div>
+            </div>
+            <div class="slider-nav">
+                <div>your content</div>
+                <div>your content</div>
+                <div>your content</div>
+            </div>
+            
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+div row
+    div col
+        div img 
+        div carosel
+    div col 
+        div name
+        div desc
+        div price
+        div tag
+<script>
+ $('.slider-for').slick({
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: false,
+  fade: true,
+  asNavFor: '.slider-nav'
+});
+$('.slider-nav').slick({
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  asNavFor: '.slider-for',
+  dots: true,
+  centerMode: true,
+  focusOnSelect: true
+});
+</script>
+{% endblock %}
