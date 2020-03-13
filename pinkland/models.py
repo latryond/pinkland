@@ -16,18 +16,48 @@ class Product(models.Model):
         ('tigers_eye','虎眼石'),
         ('clear_quartz','白水晶'),
         ('Aquamarine','海藍寶'),
-        ('pcink_beryl','摩根石'),
+        ('pink_beryl','摩根石'),
         ('rhodochrosite','紅紋石'),
         ('strawberry_quartz','草莓石'),    
         ('white_phantom','白幽靈'),
         ('sunstone','太陽石'),
         ('agate','瑪瑙'),
     )
-    list_display = ('name', 'category' )
-    name = models.CharField( max_length = 30 )
+    body_part_choice = (
+        ('bracelet', '手鏈'),
+        ('pendant', '吊墜'),
+        ('ring', '戒指'),
+        ('earring', '耳環'),
+        ('furnishing', '擺設'),
+        ('necklace', '項鏈')
+    )
+    body_part_choice = (
+        ('bracelet', '手鏈'),
+        ('pendant', '吊墜'),
+        ('ring', '戒指'),
+        ('earring', '耳環'),
+        ('furnishing', '擺設'),
+        ('necklace', '項鏈')
+    )
+    func_choice = (
+        ('carrer','事業'),
+        ('relationship','人緣'),
+        ('health','健康'),
+        ('emotion','情緒'),
+        ('stress_relieve','減壓'),
+        ('love','愛情'),
+        ('purification', '淨化'),
+        ('wealth','財運'),
+        ('exorcise_evil', '辟邪'),
+        ('away_from_snob', '防小人')
+    )
+    list_display = ('name', 'category','body_part')
+    name = models.CharField(max_length=30)
     thumbnail = models.ImageField(
         upload_to='../media/', default='/media/low-poly-texture-80.png')
-    category = models.CharField( max_length = 100,choices=category_choice )
+    category = models.CharField(max_length=100, choices=category_choice)
+    body_part = models.CharField(max_length=100, choices=body_part_choice, default='bracelet')
+    func = models.CharField(max_length=100, choices=func_choice,blank=True)
     price = models.DecimalField( max_digits=7, decimal_places=2 )
     discount = models.IntegerField(default=0)
     description = models.TextField( max_length=300, help_text='Description Maximum 300 words', blank=True)

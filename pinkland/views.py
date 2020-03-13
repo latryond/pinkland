@@ -35,12 +35,14 @@ class ProductPageView(View):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["filtered_type"] = self.pd_type
+        context["filtered_part"] = self.pd_part
         return context
 
     def get_queryset(self):
+        logging.error("get_queryset")
         self.type = get_object_or_404(
-            Product, type=self.kwargs['pd_type'])
-        return Product.objects.filter(publisher=self.type)
+            Product, type=self.kwargs['pd_type'], part=self.kwargs['pd_part'], func=self.kwargs['pd_func'])
+        return Product.objects.filter(type=self.type)
     
 
 
