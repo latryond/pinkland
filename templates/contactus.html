@@ -1,6 +1,31 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container">
+<div class="container-fluid" style="background:white;">
 
+<div style="position: relative;display:flex;justify-content:center;align-items:center;padding-top:5%;"><span style="background:black;display:block;height:2px;    width: -webkit-fill-available;"></span><div class="py-1 px-5 text-center" style="    width: -webkit-fill-available;"><h2>聯絡我們</h2></div><span style="background:black;display:block;height:2px;    width: -webkit-fill-available;"></span></div>
+
+
+<div class="row" style="height:auto;padding:3%;">
+{% comment %} <div class="col-md-6 col-sm-12" > {% endcomment %}
+<div id="map" class="col-md-8 col-sm-12" style="min-height:500px;"></div>
+{% comment %} </div> {% endcomment %}
+<div class="col col-md-4 col-sm-12">
+<h5 class="address py-3"><span class="pr-3"><i class="fas fa-store-alt pr-3"></i>門市 :</span>旺角W商場3樓306 4-10</h5> 
+<h5 class="phone py-3"><span class="pr-3"><i class="fas fa-phone pr-3"></i>電話 :</span>5622 4180</h5> 
+<h5 class="email py-3"><span class="pr-3"><i class="fas fa-envelope-open pr-3"></i>電郵 :</span>info@pinkland.com.hk</h5> 
 </div>
+</div>
+</div>    
+<script>
+// Initialize and add the map
+function initMap() {
+  var uluru = {lat: 22.3165211, lng: 114.1659331};
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 16, center: uluru});
+  var marker = new google.maps.Marker({position: uluru, map: map});
+}
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEmwbBcSI0_7Aw2EhN6abcAnIO8SzKGe0&callback=initMap">
+    </script>
 {% endblock %}

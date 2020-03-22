@@ -4,6 +4,7 @@
 {% block content %}
 
 <div class="container-fluid p-3" style="background:white;">
+<div style="position: relative;display:flex;justify-content:center;align-items:center;padding:5% 0;"><span style="background:black;display:block;height:2px;    width: -webkit-fill-available;"></span><div class="py-1 px-5 text-center" style="    width: -webkit-fill-available;"><h2>全部貨品</h2></div><span style="background:black;display:block;height:2px;    width: -webkit-fill-available;"></span></div>
 <div class="row">
     <div class="col col-12 col-lg-3 col-md-12 col-sm-12 ">
         <div class="input-group m-2">
@@ -89,7 +90,6 @@
                     <ul class="pagination justify-content-center">
                         {% if page_obj.has_previous %}
                             <li class="page-item"><a class="page-link" href="?page=1">&laquo; first</a></li>
-                            {% comment %} <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">previous</a></li> {% endcomment %}
                         {% endif %}
                         {% for page in page_obj.paginator.page_range %}
                             {% if page_obj.number == page %}
@@ -98,11 +98,7 @@
                                 <li class="page-item"><a class="page-link" href="?page={{page}}">{{page}}</a></li>
                             {% endif %}
                         {% endfor %}
-                        {% comment %} <span class="current">
-                            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-                        </span> {% endcomment %}
                         {% if page_obj.has_next %}
-                            {% comment %} <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">next</a></li> {% endcomment %}
                             <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a></li>  
                         {% endif %}
                         
