@@ -25,7 +25,7 @@ urlpatterns = [
     path('', HomePageView.as_view(), name='home'),
     path('product/', ProductPageView.as_view(), name='product'),
     # Type . Part . Function
-    path('product/<str:pd_type>/<str:pd_part>/<str:pd_func>',ProductPageView.as_view(), name='product_filtered'),
+    path('product/<str:ptype>/<str:ppart>/<str:pfunc>',ProductPageView.filterProduct, name='product_filtered'),
     path('product/<int:id>/', ProductDetailPageView.as_view(), name='product_detail'),
     path('contactus/', ContactUsPageView.as_view(), name='contactus'),
     path('aboutus/', AboutUsPageView.as_view(), name='aboutus'), 

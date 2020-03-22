@@ -14,8 +14,8 @@
             <div name="gem" class="form-control d-flex " roll="button" style="position:relative;align-items:center;justify-content:flex-end;" data-toggle="collapse" data-target="#collapse_type_filter" aria-expanded="false" aria-controls="collapse_type_filter">
             <div id="type_filter" style="position:absolute;left:0;padding:10px;">全部</div>
             <ul style="padding:0;text-overflow: ellipsis; z-index: 10; position: absolute; top: calc(1.5em + .75rem + 2px); width: 100%; right: 0;  background: white; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px; max-height: 250px; overflow-y: scroll;box-shadow: 0px 8px 15px #6e6e6e;" class="collapse" id="collapse_type_filter"> 
-                {% for t in types %}
-                    <option class="custom-select-option" data-target="type" value="{{t}}">{{t}}</option>
+                {% for value, label in types %}
+                    <option class="custom-select-option" data-target="type" value="{{value}}">{{label}}</option>
                 {% endfor %}
             </ul>
             <i class="fas fa-caret-down"></i>
@@ -35,8 +35,8 @@
             <div name="gem" class="form-control d-flex " roll="button" style="position:relative;align-items:center;justify-content:flex-end;" data-toggle="collapse" data-target="#collapse_part_filter" aria-expanded="false" aria-controls="collapse_part_filter">
             <div id="part_filter" style="position:absolute;left:0;padding:10px;">全部</div>
             <ul style="padding:0;text-overflow: ellipsis; z-index: 10; position: absolute; top: calc(1.5em + .75rem + 2px); width: 100%; right: 0;  background: white; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px; max-height: 250px; overflow-y: scroll;box-shadow: 0px 8px 15px #6e6e6e;"  class="collapse" id="collapse_part_filter"> 
-                {% for p in parts %}
-                <option class="custom-select-option" data-target="part" value="{{p}}" >{{p}}</option>
+                {% for value, label in parts %}
+                <option class="custom-select-option" data-target="part" value="{{value}}" >{{label}}</option>
                 {% endfor %}
             </ul>
             <i class="fas fa-caret-down"></i>
@@ -55,8 +55,8 @@
                 <div name="gem" class="form-control d-flex " roll="button" style="position:relative;align-items:center;justify-content:flex-end;" data-toggle="collapse" data-target="#collapse_function_filter" aria-expanded="false" aria-controls="collapse_function_filter">
                 <div id="function_filter" style="position:absolute;left:0;padding:10px;">全部</div>
                 <ul style="padding:0;text-overflow: ellipsis; z-index: 10; position: absolute; top: calc(1.5em + .75rem + 2px); width: 100%; right: 0;  background: white; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px; max-height: 250px; overflow-y: scroll;box-shadow: 0px 8px 15px #6e6e6e;" class="collapse" id="collapse_function_filter"> 
-                    {% for f in functions %}
-                    <option class="custom-select-option" data-target="function" value="{{f}}">{{f}}</option>
+                    {% for value, label in functions %}
+                    <option class="custom-select-option" data-target="function" value="{{value}}">{{label}}</option>
                     {% endfor %}
                 </ul>
                 <i class="fas fa-caret-down"></i>
