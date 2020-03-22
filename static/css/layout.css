@@ -1,33 +1,247 @@
-body { margin: 0; font-family: "Montserrat"; background-image: url("../images/pinkpoly.png"); background-size: cover; }
+body {
+    margin: 0;
+    font-family: "Montserrat";
+    background-image: url("../images/pinkpoly.png");
+    background-size: cover;
+}
 
-.header { box-shadow: 0px -5px 30px pink; background: rgba(255, 255, 255, 0.7); display: flex; }
+.header {
+    box-shadow: 0px -5px 30px pink;
+    background: rgba(255, 255, 255, 0.7);
+    display: flex;
+}
 
-.navLeft, .navRight, .center, .logo { display: -webkit-box; display: flex; -webkit-box-align: center; align-items: center; -webkit-box-pack: center; justify-content: center; }
+.navLeft,
+.navRight,
+.center,
+.logo {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
 
-.nav { display: -webkit-box; display: flex; -webkit-box-align: center; align-items: center; -webkit-box-pack: center; justify-content: center; -webkit-box-pack: justify; justify-content: space-between; padding: 10px 20px; }
+.nav {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
 
-.navLeft > * { margin-right: 12px; }
+.navLeft>* {
+    margin-right: 12px;
+}
 
-.navLeft a { text-decoration: none; font-size: 14px; color: #aeeeee; }
+.navLeft a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #aeeeee;
+}
 
-.navRight a { margin-left: 30px; padding-top: 5px; }
+.navRight a {
+    margin-left: 30px;
+    padding-top: 5px;
+}
 
-.center { padding: 5px 10px; flex: 1; }
+.center {
+    padding: 5px 10px;
+    flex: 1;
+}
 
-.center > * { font-weight: 400; font-size: 16px; text-decoration: none; width: 25%; display: flex; justify-content: space-evenly; color: #5664ad; }
+.center>* {
+    font-weight: 400;
+    font-size: 16px;
+    text-decoration: none;
+    width: 25%;
+    display: flex;
+    justify-content: space-evenly;
+    color: #5664ad;
+}
 
-ul li { list-style: none; }
+ul li {
+    list-style: none;
+}
 
-div.row { display: flex; flex-direction: row; }
+div.row {
+    display: flex;
+    flex-direction: row;
+}
 
-div.col { display: flex; flex-direction: column; }
+div.col {
+    display: flex;
+    flex-direction: column;
+}
 
-div.line-r { position: relative; }
+div.line-r {
+    position: relative;
+}
 
-div.line-r:after { content: ""; position: absolute; background-color: #d3dbed; height: 90%; align-self: center; width: 2px; right: 0; }
+div.line-r:after {
+    content: "";
+    position: absolute;
+    background-color: #d3dbed;
+    height: 90%;
+    align-self: center;
+    width: 2px;
+    right: 0;
+}
 
-.custom-select-option { padding: 10px; display: flex; justify-content: flex-start; align-items: center; border-bottom: solid 1px grey; height: 50px; }
+.custom-select-option {
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: solid 1px grey;
+    height: 50px;
+}
 
-.custom-select-option:hover { background-color: rgba(0, 0, 0, 0.1); transition: .3s; cursor: pointer; }
+.custom-select-option:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.section-title {
+    position: relative;
+}
+
+.section-title h2 {
+    padding-bottom: 0;
+}
+
+.section-title:after {
+    content: "";
+    position: absolute;
+    width: 30%;
+    height: 3px;
+    background: blue;
+    bottom: 2px;
+    left: 0;
+}
+
+.slashes {
+    overflow: hidden;
+    height: 300px;
+    background: rgb(247, 52, 122);
+    width: 100%;
+}
+
+div[class^="slash-"] {
+    float: left;
+    position: relative;
+    width: 25%;
+    height: 100%;
+    transform: skewX(10deg);
+    overflow: hidden;
+}
+
+div[class^="slash-"] img {
+    max-width: 100%;
+    max-height: 100%;
+    height: 100%;
+    transition: 0.2s ease-out;
+    overflow: hidden;
+    transform: scale(1.2);
+}
+
+div[class^="slash-"] h3 {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    z-index: 5;
+    transform: skewX(-10deg);
+}
+
+div[class^="slash-"] h3 {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    z-index: 10;
+    transform: skewX(-10deg);
+    transition: 0.2s ease-in;
+}
+
+div[class^="slash-"]:hover {
+    cursor: pointer;
+}
+
+div[class^="slash-"] .arrow-right {
+    transition: 0.2s;
+    margin-left: 5px;
+}
+
+div[class^="slash-"]:hover .arrow-right {
+    margin-right: 10px;
+    margin-left: 10px;
+    transition: 0.2s;
+}
+
+div[class^="slash-"]:hover h3 {
+    transform: skewX(-10deg) translateX(10px);
+    transition: 0.2s ease-out;
+}
+
+div[class^="slash-"] h3:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: pink;
+    width: 60%;
+    height: 3px;
+}
+
+div[class^="slash-"]:hover img {
+    transform: scale(1.4);
+    transition: 0.2s;
+}
+
+div[class^="slash-"]:after {
+    transition: 0.5s;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.5);
+    z-index: 5;
+    top: 0;
+    left: 0;
+}
+
+.more {
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+    z-index: 10;
+    transform: skew(-10deg);
+    padding-bottom: 5px;
+}
+
+.more:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: black;
+    transition: 0.2s;
+}
+
+div[class^="slash-"]:hover .more:after {
+    width: 80%;
+    background: black;
+    transition: 0.2s;
+}
+
 
 /*# sourceMappingURL=layout.css.map */
