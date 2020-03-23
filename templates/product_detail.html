@@ -1,47 +1,77 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container-fluid">
-    <div class="row">
-        <div class="col">
-            <div class="slider-for">
-                <div>your content</div>
-                <div>your content</div>
-                <div>your content</div>
-            </div>
-            <div class="slider-nav">
-                <div>your content</div>
-                <div>your content</div>
-                <div>your content</div>
-            </div>
-            
+<style>
+#indicator ul li:hover{
+cursor:pointer;
+}
+.carousel-indicator{
+    border:solid 1px transparent;
+    transition:.2s;
+}
+.carousel-indicator.active{
+    border-color:black;
+    transition:.2s;
+}
+</style>
+<div class="container-fluid" style="background:white;">
+    <div style="position: relative;display:flex;justify-content:center;align-items:center;padding:5% 0;"><span style="background:black;display:block;height:2px;    width: -webkit-fill-available;"></span><div class="py-1 px-5 text-center" style="    width: -webkit-fill-available;"><h2>產品詳細</h2></div><span style="background:black;display:block;height:2px;    width: -webkit-fill-available;"></span></div>
+    <div class="container">
+        <div class="row">
+                <div class="col col-sm-12 col-md-6">
+                    <div id="carousel" class="carousel slide"  data-ride="carousel">
+                        <div class="carousel-inner">
+                            {% for img in object.images %}
+                                <div class="carousel-item {% if forloop.counter == 1 %} active {% endif %}">
+                                    <img src="{{img.image.url}}" class="d-block w-100" alt="...">
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev" style="background-image: linear-gradient(to right, black , transparent);">
+                            <i class="fas fa-angle-left" style="font-size:3rem;"></i>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carousel" role="button" data-slide="next" style="background-image: linear-gradient(to left, black , transparent);">
+                            <i class="fas fa-angle-right" style="font-size:3rem;"></i>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                    <div id="indicator" class="w-100 d-flex justify-content-center algin-items-center py-2" style="overflow-x:scroll;max-width:100%;">
+                        <ul class="m-0 p-0">
+                            {% for img in object.images %}
+                                <li data-target="#carousel" data-slide-to="{{forloop.counter0}}" class="carousel-indicator px-2" style="float:left">
+                                    <img src="{{img.image.url}}" class="d-block" style="max-width:100px;" alt="...">
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col col-sm-12 col-md-6">
+
+                    <dl class="row">
+                    <dt class="col-sm-12"><h2>{{object.name}}</h2></dt>
+                    <dd class="col-sm-12"><span class="badge badge-primary">{{object.get_category_display}}</span>
+                        <span class="badge badge-primary">{{object.get_body_part_display}}</span></dd>
+
+                    <dt class="col-sm-3">描述</dt>
+                    <dd class="col-sm-9"><p class="lead">{{object.description}}</p></dd>
+                    <dd class="col-12" style="background:black;height:1px;"></dd>
+                    <dt class="col-sm-3">售價</dt>
+                    <dd class="col-sm-9">$ {{object.price|floatformat:"0"}}</dd>
+                    </dl>
+                </div>
         </div>
-        <div class="col"></div>
+        <div style="display:grid;grid-template-columns: 25% 25% 25% 25%;grid-template-rows: 200px;padding:5% 0;">
+        <div class="d-flex justify-content-center align-items-center col" style="background:#85bafc;color:white"><i class="fas fa-briefcase" style="font-size:3rem;"></i><p class="p-2">better career life</p></div>
+        <div class="d-flex justify-content-center align-items-center col" style="background:#f7ccdf;color:white"><i class="fas fa-heartbeat" style="font-size:3rem;color:white;"></i><p class="p-2">save your health</p></div>
+        <div class="d-flex justify-content-center align-items-center col" style="background:#85bafc;color:white"><i class="fas fa-ring" style="font-size:3rem;"></i><p class="p-2">help you in Love</p></div>
+        <div class="d-flex justify-content-center align-items-center col" style="background:#f7ccdf;color:white"><i class="fas fa-hat-wizard" style="font-size:3rem;color:white;"></i><p class="p-2">Improve your luck</p></div>
+        </div>
     </div>
 </div>
-div row
-    div col
-        div img 
-        div carosel
-    div col 
-        div name
-        div desc
-        div price
-        div tag
-<script>
- $('.slider-for').slick({
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  arrows: false,
-  fade: true,
-  asNavFor: '.slider-nav'
-});
-$('.slider-nav').slick({
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  asNavFor: '.slider-for',
-  dots: true,
-  centerMode: true,
-  focusOnSelect: true
-});
+<script type="text/javascript">
+$(".carousel-indicator").click(function(){
+    $(".carousel-indicator").removeClass("active");
+    $(this).addClass("active");
+})
 </script>
 {% endblock %}

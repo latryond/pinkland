@@ -2,6 +2,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from django.views import View
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 from .models import Product, ProductImage
 import logging 
 class HomePageView(View):
@@ -20,14 +22,6 @@ class ProductPageView(View):
         paginator = Paginator(product, 2)
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
-        # product_categ_choice = body_part_choice = func_choice = ["全部"]
-        # product_categ_choice = body_part_choice = func_choice = ["all"]
-        # for cc in Product.category_choice:
-        #     product_categ_choice.append(cc[1])
-        # for bc in Product.body_part_choice:
-        #     body_part_choice.append(bc[1])
-        # for fc in Product.func_choice:
-        #     func_choice.append(fc[1])
         
         context = {
             'products': product,
@@ -37,10 +31,32 @@ class ProductPageView(View):
             'page_obj': page_obj,
         }
         return render(request, 'product.html', context)
-    def filterProduct(self, request, ptype, ppart, pfunc):
-        logging.error(ptype+"  "+ppart+"  "+pfunc)
 
-    
+class ProductList(ListView):
+    template_name = "product_list.html"
+    model = Product 
+    paginate_by = 9
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['materials'] = Product.category_choice
+        context['parts'] = Product.body_part_choice
+        context['functions'] = Product.func_choice
+        return context
+
+class ProductDetail(DetailView):
+    model = Product
+    template_name = "product_detail.html"
+    def get_object(self, **kwargs):
+        p = Product.objects.get(id=self.kwargs['id'])
+        p.images =  ProductImage.objects.filter(product_id=self.kwargs['id'])
+        return p
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['materials'] = Product.category_choice
+        context['parts'] = Product.body_part_choice
+        context['functions'] = Product.func_choice
+        return context
 
 
 class ContactUsPageView(View):
@@ -61,10 +77,4 @@ class AboutUsPageView(View):
         return render(request, 'aboutus.html', context)
 
 
-class ProductDetailPageView(View):
-    def get(self, request, *args, **kwargs):
-        title = "ProductDetail"
-        context = {
-            'title': title
-        }
-        return render(request, 'product_detail.html', context)
+
