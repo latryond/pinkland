@@ -4,41 +4,28 @@ from django.core.paginator import Paginator
 from django.views import View
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.views.generic.base import TemplateView
 from .models import Product, ProductImage
 import logging 
-class HomePageView(View):
-    def get(self, request, *args, **kwargs):
-        title = "asdfasdf"
-        context = {
-            'title':title
-        }
-        return render(request, 'index.html', context)
+class HomePageView(TemplateView):
+    template_name = "index.html"
 
-
-class ProductPageView(View):
-    def get(self, request, *args, **kwargs):
-        title = "Product"
-        product = Product.objects.all()
-        paginator = Paginator(product, 2)
-        page_number = request.GET.get('page')
-        page_obj = paginator.get_page(page_number)
-        
-        context = {
-            'products': product,
-            'types': Product.category_choice,
-            'parts': Product.body_part_choice,
-            'functions': Product.func_choice,
-            'page_obj': page_obj,
-        }
-        return render(request, 'product.html', context)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['latest_product'] = Product.objects.all().order_by("-date_create")[:3]
+        context['parts'] = Product.body_part_choice
+        return context
 
 class ProductList(ListView):
     template_name = "product_list.html"
     model = Product 
     paginate_by = 9
-
+    def get_queryset(self):
+        logging.error(self.kwargs)
+        return Product.objects.all()
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+        logging.error(self.kwargs)
+        context = super().get_context_data(**kwargs)    
         context['materials'] = Product.category_choice
         context['parts'] = Product.body_part_choice
         context['functions'] = Product.func_choice
@@ -53,9 +40,6 @@ class ProductDetail(DetailView):
         return p
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['materials'] = Product.category_choice
-        context['parts'] = Product.body_part_choice
-        context['functions'] = Product.func_choice
         return context
 
 

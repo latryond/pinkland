@@ -2,6 +2,21 @@ from django.conf import settings
 from django.db import models
 from django.utils import timezone
 from django.utils.safestring import mark_safe
+from django.db.models import ForeignKey
+
+# class ProductCategory(models.Model):
+#     name = models.CharField(max_length=30)
+#     product = ForeignKey(Product, on_delete=models.CASCADE)
+
+# class ProductPart(models.Model):
+#     name = models.CharField(max_length=30)
+#     product = ForeignKey(Product, on_delete=models.CASCADE)
+
+# class ProductFunctionality(models.Model):
+#     name = models.CharField(max_length=30)
+#     product = ForeignKey(Product, on_delete=models.CASCADE)
+
+
 
 class Product(models.Model):
     category_choice=(
@@ -31,14 +46,6 @@ class Product(models.Model):
         ('furnishing', '擺設'),
         ('necklace', '項鏈')
     )
-    body_part_choice = (
-        ('bracelet', '手鏈'),
-        ('pendant', '吊墜'),
-        ('ring', '戒指'),
-        ('earring', '耳環'),
-        ('furnishing', '擺設'),
-        ('necklace', '項鏈')
-    )
     func_choice = (
         ('carrer','事業'),
         ('relationship','人緣'),
@@ -53,17 +60,14 @@ class Product(models.Model):
     )
     list_display = ('name', 'category','body_part')
     name = models.CharField(max_length=30)
-    thumbnail = models.ImageField(
-        upload_to='../media/', default='/media/low-poly-texture-80.png')
+    thumbnail = models.ImageField(upload_to='../media/', default='/media/low-poly-texture-80.png')
     category = models.CharField(max_length=100, choices=category_choice)
-    body_part = models.CharField(max_length=100, choices=body_part_choice, default='bracelet')
+    body_part = models.CharField(max_length=100, choices=body_part_choice)
     func = models.CharField(max_length=100, choices=func_choice,blank=True)
-    price = models.DecimalField( max_digits=7, decimal_places=2 )
-    discount = models.IntegerField(default=0)
+    price = models.SmallIntegerField()
+    discount = models.SmallIntegerField(default=0,help_text='unit in percentage')
     description = models.TextField( max_length=300, help_text='Description Maximum 300 words', blank=True)
-    ProductImages = None
-    is_sale = False
-    
+    date_create = models.DateTimeField(db_index=True,auto_now_add=True)
     def preview_photo(self):
         return mark_safe('<img src="{}" style="width:50%" />'.format(self.image.url))
     preview_photo.short_description = 'Image'
