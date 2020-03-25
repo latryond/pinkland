@@ -110,25 +110,32 @@ div.line-r:after {
 
 .section-title {
     position: relative;
+    padding-left: 5%;
+    margin: 3% 0%;
 }
 
 .section-title h2 {
-    padding-bottom: 0;
+    padding-bottom: 10px;
+    width: fit-content;
+    position: relative;
 }
 
-.section-title:after {
+.section-title h2:after {
     content: "";
     position: absolute;
-    width: 30%;
+    width: 80%;
     height: 3px;
-    background: blue;
-    bottom: 2px;
+    background: pink;
+    bottom: 0px;
     left: 0;
 }
 
 .slashes {
     overflow: hidden;
     height: 300px;
+    max-width: 100vw;
+    min-width: 1000px;
+    scroll-behavior: smooth;
     background: rgb(247, 52, 122);
     width: 100%;
 }
@@ -237,10 +244,81 @@ div[class^="slash-"]:after {
     transition: 0.2s;
 }
 
-div[class^="slash-"]:hover .more:after {
-    width: 80%;
-    background: black;
+div[class^="slash-"]:hover .more {
+    color: orange;
     transition: 0.2s;
+}
+
+
+/* div[class^='slash-']:hover .more:after{
+  width:50%;
+  background:white;
+  transition:.2s;
+} */
+
+.fl {
+    float: left;
+}
+
+.product {
+    position: relative;
+    width: fit-content;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.product img {
+    /*   position: absolute; */
+    height: max-content;
+    width: max-content;
+}
+
+.product-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.btn.product-details {
+    color: white;
+    background: transparent;
+    margin: 0 6%;
+    border: solid;
+    transition: 0.2s;
+}
+
+.btn.product-details:hover {
+    cursor: pointer;
+    color: orange;
+    border-color: orange;
+    transition: 0.2s;
+}
+
+.btn.product-details:hover h2 {
+    color: orange;
+    border-color: orange;
+    transition: 0.2s;
+}
+
+.product-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: .2s;
+}
+
+.product:hover .product-overlay {
+    visibility: visible;
+    background: rgba(0, 0, 0, 0.4);
+    transition: .2s;
 }
 
 

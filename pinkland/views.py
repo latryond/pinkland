@@ -22,9 +22,16 @@ class ProductList(ListView):
     paginate_by = 9
     def get_queryset(self):
         logging.error(self.kwargs)
-        return Product.objects.all()
+        p = Product.objects.all()
+        if 'type' and 'part' and 'function' in self.kwargs:
+            if self.kwargs['type'] != 'all':
+                p = p.filter(category=self.kwargs['type'])
+            if self.kwargs['part'] != 'all':
+                p = p.filter(body_part=self.kwargs['part'])
+            if self.kwargs['function'] != 'all':
+                p = p.filter(func=self.kwargs['function'])
+        return p
     def get_context_data(self, **kwargs):
-        logging.error(self.kwargs)
         context = super().get_context_data(**kwargs)    
         context['materials'] = Product.category_choice
         context['parts'] = Product.body_part_choice

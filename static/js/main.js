@@ -2,10 +2,7 @@
 
 $(".custom-select-option").click(function() {
     var target = $(this).data("target");
-    console.log($(this).data("target"));
-    console.log($(`#${target}_filter`))
-    console.log($(this).val());
-    $(`#${target}_filter`).html($(this).val());
+    $(`#${target}_filter`).html($(this).html());
 })
 
 $("#query_submit").click(function() {
