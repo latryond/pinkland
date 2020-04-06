@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+  <div class="content-container">
+    <div class="container">
+  <section class="background">
+<div class="carousel">
+  <div class="carousel__nav">
+   <span id="moveLeft" class="carousel__arrow">
+        <svg class="carousel__icon" width="24" height="24" viewBox="0 0 24 24">
+    <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"></path>
+  </svg>
+      </span>
+      <span id="moveRight" class="carousel__arrow" >
+        <svg class="carousel__icon"  width="24" height="24" viewBox="0 0 24 24">
+    <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path>
+  </svg>    
+    </span>
+  </div>
+
+  {% for p in posters %}
+ <div class="carousel-item carousel-item--{{forloop.counter}}">
+    <div class="carousel-item__image" style="background-image:url({{p.image.url}})"></div>
+    <div class="carousel-item__info">
+      <div class="carousel-item__container">
+      <h1 class="carousel-item__title">{{p.title}}</h1>
+      <p class="carousel-item__description">{{p.description}}</p>
+      <a href="#" class="carousel-item__btn">Show more</a>
+        </div>
+    </div>
+  </div>
+{% endfor %}      
+</div>
+
+  </section>
+  <section class="background" style="background-image:url({% static 'assets/images/img2.jpeg' %})" >
+    <div class="content-wrapper row resp">
+      {% for p in products %}
+        <div>
+          <div class="product__image"><img src="{{p.thumbnail.url}}" style="max-width:30vw"/></div>
+          <div class="product__name">{{p.name}}</div>
+          <div class="product__categ">{{p.categ}}</div>
+          <div class="product__function">{% for f in p.functions.all  %}{% if forloop.counter != 1 %},{%endif%}{{f}}{% endfor %}</div>
+        </div>
+      {% endfor %}
+      
+    </div>
+  </section>
+  <section class="background" style="background-image:url({% static 'assets/images/pinkpoly.png' %})" >
+    <div class="content-wrapper">
+    <div style="width:50vw;display:flex;justify-content:center;align-items:center;"><img src="{% static 'assets/images/logo.png' %}" width="80%%"/></div>
+      <div class="right">
+            <p class="content-title">關於我們</p>
+            <p class="content-subtitle">{% lorem 1 b random %}</p>
+      </div>
+
+    </div>
+  </section>
+</div>
+  </div>
+
+{% endblock  %}
