@@ -32,7 +32,7 @@ urlpatterns = [
     path('product_detail/<int:id>/', ProductDetail.as_view(),name='product_detail'),
     path('contactus/', ContactUsPageView.as_view(), name='contactus'),
     path('aboutus/', AboutUsPageView.as_view(), name='aboutus'), 
-] 
+] + static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

@@ -78,7 +78,7 @@
       {% for p in page_obj %}
       <div class="col-4  my-3 py-2 col-md-4 col-sm-6" style="">
          <div class="card ">
-            <img src="{{p.thumbnail}}" class="card-img-top p-2" style="object-fit: scale-down;height:200px;" alt="Product image">
+            <img src="{{ p.thumbnail.url }}" class="card-img-top p-2" style="object-fit: scale-down;height:200px;" alt="Product image">
             <div class="card-body">
                <h5 class="card-title">{{p.name}}</h5>
                <p class="card-text"></p>

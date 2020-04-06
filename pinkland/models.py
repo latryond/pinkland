@@ -60,22 +60,23 @@ class Product(models.Model):
     )
     list_display = ('name', 'category','body_part')
     name = models.CharField(max_length=30)
-    thumbnail = models.ImageField(upload_to='../media/', default='/media/low-poly-texture-80.png')
+    thumbnail = models.ImageField(upload_to='product_image/', default='/media/low-poly-texture-80.png')
     category = models.CharField(max_length=100, choices=category_choice)
     body_part = models.CharField(max_length=100, choices=body_part_choice)
-    func = models.CharField(max_length=100, choices=func_choice,blank=True)
+    func = models.CharField(max_length=100, choices=func_choice, blank=True)
     price = models.SmallIntegerField()
     discount = models.SmallIntegerField(default=0,help_text='unit in percentage')
     description = models.TextField( max_length=300, help_text='Description Maximum 300 words', blank=True)
     date_create = models.DateTimeField(db_index=True,auto_now_add=True)
-    def preview_photo(self):
-        return mark_safe('<img src="{}" style="width:50%" />'.format(self.image.url))
-    preview_photo.short_description = 'Image'
-    preview_photo.allow_tags = True
 
     def __str__(self):
         return self.name
 
 class ProductImage(models.Model):
     product_id = models.ForeignKey('Product',on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='media', blank=True)
+    image = models.ImageField(upload_to='product_image', blank=True)
+
+class Poster(models.Model):
+    title = models.CharField(max_length=50)
+    description = models.TextField( max_length=300, help_text='Description Maximum 300 words', blank=True)
+    image = models.ImageField(upload_to='poster_image', blank=True, help_text="please upload image above 800 x 600 px")

@@ -30,6 +30,8 @@ class ProductList(ListView):
                 p = p.filter(body_part=self.kwargs['part'])
             if self.kwargs['function'] != 'all':
                 p = p.filter(func=self.kwargs['function'])
+        elif 'part' in self.kwargs:
+            p = p.filter(body_part=self.kwargs['part'])
         return p
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)    

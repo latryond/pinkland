@@ -9,12 +9,13 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-
+from os.path import abspath, basename, dirname, join, normpath
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+DJANGO_ROOT = dirname(dirname(abspath(__file__)))
+PROJECT_ROOT = dirname(DJANGO_ROOT)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -91,16 +92,19 @@ WSGI_APPLICATION = 'pinkland.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databas#es
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'postgres',
-#         'USER': 'super',
-#         'PASSWORD': 'post55#Gre12',
-#         'HOST': 'latryond-1480.postgres.pythonanywhere-services.com',
-#         'PORT': '11480',
-#     }
-# }
+'''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'postgres',
+        'USER': 'super',
+        'PASSWORD': 'post55#Gre12',
+        'HOST': 'latryond-1480.postgres.pythonanywhere-services.com',
+        'PORT': '11480',
+    }
+}
+'''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -111,6 +115,7 @@ DATABASES = {
         'PORT': '',
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -148,17 +153,44 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/' 
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
-SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
-STATICFILES_DIRS = (
-    os.path.join(SITE_ROOT, 'static/'),
-)
+# ##### PATH CONFIGURATION ################################
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+# fetch Django's project directory
+DJANGO_ROOT = dirname(dirname(abspath(__file__)))
 
-SASS_PROCESSOR_INCLUDE_DIRS = [
-    os.path.join(BASE_DIR, 'static/scss'),
+# fetch the project_root
+PROJECT_ROOT = dirname(DJANGO_ROOT)
+
+# the name of the whole site
+SITE_NAME = basename(DJANGO_ROOT)
+
+# collect static files here
+STATIC_ROOT = join(PROJECT_ROOT, 'static')
+
+# collect media files here
+MEDIA_ROOT = join(PROJECT_ROOT, 'media')
+
+# # look for static assets here
+# STATICFILES_DIRS = [
+#     join(PROJECT_ROOT, 'static'),
+# ]
+
+# look for templates here
+# This is an internal setting, used in the TEMPLATES directive
+PROJECT_TEMPLATES = [
+    join(PROJECT_ROOT, 'templates'),
 ]
 
+# ##### DJANGO RUNNING CONFIGURATION ######################
+
+# the default WSGI application
+WSGI_APPLICATION = '%s.wsgi.application' % SITE_NAME
+
+# the root URL configuration
+ROOT_URLCONF = '%s.urls' % SITE_NAME
+
+# the URL for static files
+STATIC_URL = '/static/'
+
+# the URL for media files
+MEDIA_URL = '/media/'
