@@ -96,7 +96,7 @@ WSGI_APPLICATION = 'pinkland.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
+        'NAME': 'pldb',
         'USER': 'super',
         'PASSWORD': 'post55#Gre12',
         'HOST': 'latryond-1480.postgres.pythonanywhere-services.com',
@@ -107,7 +107,7 @@ DATABASES = {
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'postgres',
+#         'NAME': 'pldb',
 #         'USER': 'postgres',
 #         'PASSWORD': 'rc11270828',
 #         'HOST': 'localhost',
