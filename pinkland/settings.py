@@ -54,19 +54,10 @@ MIDDLEWARE = [
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'sass_processor.finders.CssFinder',
 ]
 
 ROOT_URLCONF = 'pinkland.urls'
 
-# read: filename starts with an underscore and is of type scss or sass
-SASS_PROCESSOR_AUTO_INCLUDE = False
-
-SASS_PROCESSOR_INCLUDE_FILE_PATTERN = r'^.+\.scss$'
-
-SASS_PRECISION = 8
-SASS_OUTPUT_STYLE = 'compact'
-SASS_PROCESSOR_ENABLED = True
 
 TEMPLATES = [
     {
