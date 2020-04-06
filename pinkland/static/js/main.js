@@ -98,8 +98,18 @@ function slideDurationTimeout(slideDuration) {
 
 // ------------- ADD EVENT LISTENER ------------- //
 var mousewheelEvent = isFirefox ? "DOMMouseScroll" : "wheel";
-window.addEventListener(mousewheelEvent, _.throttle(parallaxScroll, 60), false);
 
+$(document).on('touchmove', function() { //touchmove works for iOS, I don't know if Android supports it
+    alert("success touch");
+    $(document).trigger(mousewheelEvent);
+
+});
+$(document).on('scoll', function() { //touchmove works for iOS, I don't know if Android supports it
+    alert("success scroll");
+    $(document).trigger(mousewheelEvent);
+
+});
+window.addEventListener(mousewheelEvent, _.throttle(parallaxScroll, 60), false);
 // ------------- SLIDE MOTION ------------- //
 function nextItem() {
     var $previousSlide = $(".background").eq(currentSlideNumber - 1);
