@@ -1,94 +1,44 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load discount %}
 {% block content%}
-<div class="container-fluid" style="background:white;">
-   <div style="position: relative;display:flex;justify-content:center;align-items:center;padding:5% 0;">
-      <span style="background:black;display:block;height:2px;    width: -webkit-fill-available;"></span>
-      <div class="py-1 px-5 text-center" style="    width: -webkit-fill-available;">
-         <h2>全部貨品</h2>
-      </div>
-      <span style="background:black;display:block;height:2px;    width: -webkit-fill-available;"></span>
+
+<div class="product-container center">
+<h1 style="margin-top:50px;">所有產品</h1>
+<h3 class="filter-open"> <i class="fas fa-filter"></i> 篩選列表</h3>
+</div>
+<div class="product-container">
+
+   <div class="filter-list-wrapper" style="">
+   <span style="font-weight:700">材料</span>
+   <ul>{% for o in materials %}<li class="filter-item"><a href="{% url 'product_filter' 'material' o.id %}">{{o.name}}</a></li>{% endfor %}</ul>
+   <span style="font-weight:700">類別</span>
+   <ul>{% for o in categ %}<li class="filter-item"><a href="{% url 'product_filter' 'categ' o.id %}">{{o.name}}</a></li>{% endfor %}</ul>
+   <span style="font-weight:700">功能</span>
+   <ul>{% for o in functions %}<li class="filter-item"><a href="{% url 'product_filter' 'functions' o.id %}">{{o.name}}</a></li>{% endfor %}</ul>
    </div>
-   <div class="row">
-      <div class="col col-12 col-lg-3 col-md-12 col-sm-12 ">
-         <div class="input-group m-2">
-            <div class="input-group-prepend">
-               <span class="input-group-text">
-               類別
-               <i class="far fa-gem pl-2"></i>
-               </span>
-            </div>
-            <div name="gem" class="form-control d-flex " roll="button" style="position:relative;align-items:center;justify-content:flex-end;" data-toggle="collapse" data-target="#collapse_type_filter" aria-expanded="false" aria-controls="collapse_type_filter">
-               <div id="type_filter" style="position:absolute;left:0;padding:10px;">全部</div>
-               <ul style="padding:0;text-overflow: ellipsis; z-index: 10; position: absolute; top: 0; width: 100%; right: 0;  background: white; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px; max-height: 250px; overflow-y: scroll;box-shadow: 0px 8px 15px #6e6e6e;" class="collapse" id="collapse_type_filter">
-                  <option class="custom-select-option" data-target="type" value="all" >全部</option>
-                  {% for value, label in materials %}
-                  <option class="custom-select-option" data-target="type" value="{{value}}">{{label}}</option>
-                  {% endfor %}
-               </ul>
-               <i class="fas fa-caret-down"></i>
-            </div>
-         </div>
-      </div>
-      <div class="col col-12  col-lg-3 col-md-12 col-sm-12 ">
-         <div class="input-group m-2">
-            <div class="input-group-prepend">
-               <span class="input-group-text">
-               部位
-               <i class="fas fa-child pl-2"></i>
-               </span>
-            </div>
-            <div name="gem" class="form-control d-flex " roll="button" style="position:relative;align-items:center;justify-content:flex-end;" data-toggle="collapse" data-target="#collapse_part_filter" aria-expanded="false" aria-controls="collapse_part_filter">
-               <div id="part_filter" style="position:absolute;left:0;padding:10px;">全部</div>
-               <ul style="padding:0;text-overflow: ellipsis; z-index: 10; position: absolute; top: 0; width: 100%; right: 0;  background: white; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px; max-height: 250px; overflow-y: scroll;box-shadow: 0px 8px 15px #6e6e6e;"  class="collapse" id="collapse_part_filter">
-                  <option class="custom-select-option" data-target="part" value="all" >全部</option>
-                  {% for value, label in parts %}
-                  <option class="custom-select-option" data-target="part" value="{{value}}" >{{label}}</option>
-                  {% endfor %}
-               </ul>
-               <i class="fas fa-caret-down"></i>
-            </div>
-         </div>
-      </div>
-      <div class="col col-12  col-lg-3 col-md-12 col-sm-12">
-         <div class="input-group m-2">
-            <div class="input-group-prepend">
-               <span class="input-group-text">
-               功能
-               <i class="fas fa-thumbs-up pl-2"></i>
-               </span>
-            </div>
-            <div name="gem" class="form-control d-flex " roll="button" style="position:relative;align-items:center;justify-content:flex-end;" data-toggle="collapse" data-target="#collapse_function_filter" aria-expanded="false" aria-controls="collapse_function_filter">
-               <div id="function_filter" style="position:absolute;left:0;padding:10px;">全部</div>
-               <ul style="padding:0;text-overflow: ellipsis; z-index: 10; position: absolute; top: 0; width: 100%; right: 0;  background: white; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px; max-height: 250px; overflow-y: scroll;box-shadow: 0px 8px 15px #6e6e6e;" class="collapse" id="collapse_function_filter">
-                  <option class="custom-select-option" data-target="function" value="all" >全部</option>
-                  {% for value, label in functions %}
-                  <option class="custom-select-option" data-target="function" value="{{value}}">{{label}}</option>
-                  {% endfor %}
-               </ul>
-               <i class="fas fa-caret-down"></i>
-            </div>
-         </div>
-      </div>
-      <div class="col col-12  col-lg-3 col-md-12 col-sm-12 justify-content-center">
-         <button type="button" id="query_submit" class="btn btn-primary">Search</button>
-      </div>
-   </div>
-   <div class="row p-3 ">
-      {% for p in page_obj %}
-      <div class="col-4  my-3 py-2 col-md-4 col-sm-6" style="">
-         <div class="card ">
-            <img src="{{ p.thumbnail.url }}" class="card-img-top p-2" style="object-fit: scale-down;height:200px;" alt="Product image">
-            <div class="card-body">
-               <h5 class="card-title">{{p.name}}</h5>
-               <p class="card-text"></p>
-               <a href="{% url 'product_detail' p.id %}" class="btn btn-primary">Details</a>
-            </div>
-         </div>
-      </div>
-      {% endfor %}
-   </div>
-   <nav aria-label="Page navigation" class="p-3">
+   <div class="product-wrapper small" style="">
+   {% for obj in page_obj %}
+    <div class="product" style="">
+      <a href="{% url 'product_detail' obj.id %}">
+        <img class="" style="" src="{{obj.thumbnail.url}}" alt="">
+        <div class="product-overlay">
+            <h3 class="">{{obj.name}}</h3>
+            {% if obj.discount != 0 %}
+            <h3 class="">$ {% discount obj.price obj.discount %}</h3>
+            {% else %}
+              <h3 class="">$ {{obj.price}}</h3>
+            {% endif %}
+            
+        </div>
+        </a>
+    </div>
+   {% endfor %} 
+</div>
+</div>
+
+
+   {% comment %} <nav aria-label="Page navigation" class="p-3">
       <ul class="pagination justify-content-center">
          {% for page in page_obj.paginator.page_range %}
          {% if page_obj.number == page %}
@@ -98,6 +48,5 @@
          {% endif %}
          {% endfor %}
       </ul>
-   </nav>
-</div>
+   </nav> {% endcomment %}
 {% endblock content%}

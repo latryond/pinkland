@@ -1,16 +1,18 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
-<div class="container-fluid" style="background:white;">
-
-   <div style="position: relative;display:flex;justify-content:center;align-items:center;padding:5% 0;">
-      <span style="background:black;display:block;height:2px;    width: -webkit-fill-available;"></span>
-      <div class="py-1 px-5 text-center" style="    width: -webkit-fill-available;">
-         <h2>關於我們</h2>
-      </div>
-      <span style="background:black;display:block;height:2px;    width: -webkit-fill-available;"></span>
+<div>
+   <div class="center" style="background-image:url({% static 'images/pinkpoly.png' %});background-size: cover;">
+   <img src="{% static 'images/logo.png' %}" style="width:30vw;"/>
    </div>
-    <div class="container pb-5">
-        {% lorem %}
-    </div>
+   <div style="position: relative;display:flex;justify-content:center;align-items:center;padding:5% 0;">
+      <div class="blackline"></div>
+      <h2 class="" style="text-align:center;display:block;padding:0;margin:0;    width: -webkit-fill-available;">關於我們</h2>
+      <div class="blackline"></div>
+   </div>
+
+   <div class="content" style="padding:3% 5%">
+   {% lorem 4 b random %}
+   </div>
 </div>
 {% endblock %}

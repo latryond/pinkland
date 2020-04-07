@@ -1,125 +1,64 @@
 {% load static %}
+
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" >
     <meta charset="utf-8">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" >
+    <script type="text/javascript"> (function() { var css = document.createElement('link'); css.href = 'https://use.fontawesome.com/releases/v5.1.0/css/all.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,300;0,700;1,200&display=swap" rel="stylesheet">
     <link href="{% static 'css/layout.css' %}" rel="stylesheet" type="text/css" />
-    <link href="{% static 'css/slick.css' %}" rel="stylesheet" type="text/css" />
-    <link href="{% static 'css/slick-theme.css' %}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}"/>
-    
 </head>
-<header>
-    <style>
-
-        .header {
-            box-shadow: 0px -5px 30px pink;
-            background: rgba(255,255,255,0.7);
-            display:flex;
-        }
-
-    </style>
-
-    <div class="navbar navbar-expand-lg navbar-light d-flex justify-content-center" style="    background-color: rgba(255,255,255,0.7);">
-        <a class="logo " href="{% url 'home' %}"><img src="{% static "images/logo.png" %}" height="100px"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation" style="right:3%;position:absolute;">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    </div>
-
-<nav class="navbar navbar-expand-lg navbar-light d-flex" style="    background-color: rgba(255,255,255,0.7);">
-  <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav w-100" class="justify-content:space-around;">
-      <li class="nav-item active col col-lg-3 col-sm-12">
-        <a class="nav-link d-flex justify-content-center align-items-center" style="" href="{% url 'home' %}"><span><i class="fas fa-home mr-2"></i>首頁<span class="sr-only">(current)</span></span></a>
-      </li>
-      <li class="nav-item col col-lg-3 col-sm-12">
-        <a class="nav-link d-flex justify-content-center align-items-center" style="" href="{% url 'product' %}"><span><i class="fas fa-box mr-2"></i>產品</span></a>
-      </li>
-      <li class="nav-item col col-lg-3 col-sm-12">
-        <a class="nav-link d-flex justify-content-center align-items-center" style="" href="{% url 'contactus' %}"><span><i class="fas fa-address-card mr-2"></i>聯絡我們</span></a>
-      </li>
-      <li class="nav-item col col-lg-3 col-sm-12">
-      <a class="nav-link d-flex justify-content-center align-items-center" style="" href="{% url 'aboutus' %}"><span><i class="fas fa-address-card mr-2"></i>關於我們</span></a>
-        {% comment %} <a class="nav-link" style="display: flex; justify-content: space-evenly; align-items: center;" href="{% url 'aboutus' %}"><i class="fas fa-hand-holding-heart"></i>ABOUT US </a> {% endcomment %}
-      </li>
-    </ul>
-  </div>
-
-</nav>
-
-</header>
 
 <body>
-{% block content %}
-
-    
-    
-{% endblock %}
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="{% static "js/slick.js" %}" type="text/javascript"></script>
-    <script src="{% static "js/main.js" %}" type="text/javascript"></script>
-    <script src="{% static "js/font-awersome.js" %}" type="text/javascript"></script>
-</body>
-
-<!-- Footer -->
-<footer class="page-footer font-small cyan darken-3">
-
-  <!-- Footer Elements -->
-  <div class="container">
-
-    <!-- Grid row-->
-    <div class="row">
-
-      <!-- Grid column -->
-      <div class="col-md-12 pt-5 d-flex justify-content-center">
-        <div class="mb-5 flex-center">
-
-          <!-- Facebook -->
-          <a class="fb-ic" href="https://www.facebook.com/Pinkland%E7%A7%98%E5%AF%86%E6%B0%B4%E6%99%B6-1226873457338019/">
-            <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-          </a>
-          <!-- Twitter -->
-          <a class="tw-ic">
-            <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-          </a>
-          <!-- Google +-->
-          <a class="gplus-ic">
-            <i class="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-          </a>
-          <!--Linkedin -->
-          <a class="li-ic">
-            <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-          </a>
-          <!--Instagram-->
-          <a class="ins-ic" href="https://www.instagram.com/pinkland_crystalshop/">
-            <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-          </a>
-          <!--Pinterest-->
-          <a class="pin-ic">
-            <i class="fab fa-pinterest fa-lg white-text fa-2x"> </i>
-          </a>
+<div id="loader-wrapper">
+  <div id="loader"></div>
+  
+  <div class="loader-section section-left"></div>
+  <div class="loader-section section-right"></div>
+  
+</div>
+    <!-- header nav with logo -->
+    <header>
+        <div class="square top" style="border-bottom-right-radius: 50%;"><a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" class="logo" style="max-width:100%" alt=""></a></div>
+        <div class="fill">
+        <div class="burger" id="burger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
-      </div>
-      <!-- Grid column -->
-
-    </div>
-    <!-- Grid row-->
-
+    </header>
+      
+  <div class="menu">
+    <ul>
+      <li class="menu-item"><div class="blackline"></div><a href="{% url 'home' %}">主頁</a><div class="blackline"></div></li>
+      <li class="menu-item"><div class="blackline"></div><a href="{% url 'product_list' %}">所有產品</a><div class="blackline"></div></li>
+      <li class="menu-item"><div class="blackline"></div><a href="{% url 'aboutus' %}">關於我們</a><div class="blackline"></div></li>
+      <li class="menu-item"><div class="blackline"></div><a href="{% url 'contact' %}">聯繫我們</a><div class="blackline"></div></li>
+    </ul>
+    
   </div>
-  <!-- Footer Elements -->
 
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2020 Copyright:
-    <a href="https://www.pinkland.com.hk/"> Pinkland.com</a>
-  </div>
-  <!-- Copyright -->
+    {% block content %} {% endblock %}
+    
+    <footer>
+        <div class="blackline"></div>
+        <div style="width:100vw;display:flex;justify-content:space-evenly;align-items:center;">
+            <a href="https://www.instagram.com/pinkland_crystalshop/"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/Pinkland%E7%A7%98%E5%AF%86%E6%B0%B4%E6%99%B6-1226873457338019/"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://api.whatsapp.com/send?phone=85256224180"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <div class="blackline"></div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js" type="text/javascript"></script>
+    {% comment %} <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> {% endcomment %}
+    <script src="{% static  'js/font-awersome.js' %}" type="text/javascript"></script>
+    <script src="{% static  'js/main.js' %}" type="text/javascript"></script>
+<body>
 
-</footer>
-<!-- Footer -->
 
-       
+
+ 
+</body>

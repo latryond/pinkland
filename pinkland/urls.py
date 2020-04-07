@@ -23,14 +23,12 @@ import logging
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomePageView.as_view(), name='home'),
-    path('product_list/', ProductList.as_view(),name='product'),
-    path('product_list/<str:type>/<str:part>/<str:function>/', ProductList.as_view(),name='filtered_product'),
-    path('product_list/<str:part>/<str:type>/', ProductList.as_view(),name='product_part_type'),
-    path('product_list/<str:part>/', ProductList.as_view(),name='product_part'),
+    path('product_list/', ProductList.as_view(),name='product_list'),
+    path('product_list/<str:filter>/<int:value>/', ProductList.as_view(), name='product_filter'),
     
     
     path('product_detail/<int:id>/', ProductDetail.as_view(),name='product_detail'),
-    path('contactus/', ContactUsPageView.as_view(), name='contactus'),
+    path('contactus/', ContactUsPageView.as_view(), name='contact'),
     path('aboutus/', AboutUsPageView.as_view(), name='aboutus'), 
 ] + static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
 
