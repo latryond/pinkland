@@ -84,27 +84,27 @@ WSGI_APPLICATION = 'pinkland.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databas#es
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'pldb',
-        'USER': 'super',
-        'PASSWORD': 'post55#Gre12',
-        'HOST': 'latryond-1480.postgres.pythonanywhere-services.com',
-        'PORT': '11480',
-    }
-}
-
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 #         'NAME': 'pldb',
-#         'USER': 'postgres',
-#         'PASSWORD': 'rc11270828',
-#         'HOST': 'localhost',
-#         'PORT': '',
+#         'USER': 'super',
+#         'PASSWORD': 'post55#Gre12',
+#         'HOST': 'latryond-1480.postgres.pythonanywhere-services.com',
+#         'PORT': '11480',
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'pldb',
+        'USER': 'postgres',
+        'PASSWORD': 'rc11270828',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
 
 
 # Password validation
@@ -164,8 +164,11 @@ PROJECT_TEMPLATES = [
 
 WSGI_APPLICATION = '%s.wsgi.application' % SITE_NAME
 
+
 ROOT_URLCONF = '%s.urls' % SITE_NAME
 
+
 STATIC_URL = '/static/'
+
 
 MEDIA_URL = '/media/'

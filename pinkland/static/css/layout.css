@@ -1403,7 +1403,7 @@ body {
 .post {
     display: flex;
     width: 90%;
-    margin: 3% 5%;
+    margin: 3% auto;
     position: relative;
     padding: 15px;
 }
@@ -1435,6 +1435,7 @@ body {
 .caption-wrapper {
     display: flex;
     flex-direction: column;
+    width: 50%;
 }
 
 .caption-wrapper a {
@@ -1447,6 +1448,10 @@ body {
 
 .filter-list-wrapper {
     position: sticky;
+}
+
+.media-wrapper {
+    width: 50%;
 }
 
 @media screen and (max-width: 797px) {
@@ -1489,6 +1494,13 @@ body {
         flex-direction: column-reverse;
         justify-content: center;
         align-items: center;
+    }
+    .caption-wrapper {
+        width: 100%;
+        padding: 20px 5%;
+    }
+    .media-wrapper {
+        width: 100%;
     }
 }
 
