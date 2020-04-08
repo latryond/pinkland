@@ -84,27 +84,27 @@ WSGI_APPLICATION = 'pinkland.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databas#es
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'pldb',
-#         'USER': 'super',
-#         'PASSWORD': 'post55#Gre12',
-#         'HOST': 'latryond-1480.postgres.pythonanywhere-services.com',
-#         'PORT': '11480',
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'pldb',
-        'USER': 'postgres',
-        'PASSWORD': 'rc11270828',
-        'HOST': 'localhost',
-        'PORT': '',
+        'USER': 'super',
+        'PASSWORD': 'post55#Gre12',
+        'HOST': 'latryond-1480.postgres.pythonanywhere-services.com',
+        'PORT': '11480',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'pldb',
+#         'USER': 'postgres',
+#         'PASSWORD': 'rc11270828',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
 
 
 # Password validation
@@ -145,42 +145,27 @@ USE_TZ = True
 
 # ##### PATH CONFIGURATION ################################
 
-# fetch Django's project directory
 DJANGO_ROOT = dirname(dirname(abspath(__file__)))
 
-# fetch the project_root
 PROJECT_ROOT = dirname(DJANGO_ROOT)
 
-# the name of the whole site
 SITE_NAME = basename(DJANGO_ROOT)
 
-# collect static files here
 STATIC_ROOT = join(PROJECT_ROOT, 'static')
 
-# collect media files here
 MEDIA_ROOT = join(PROJECT_ROOT, 'media')
 
-# # look for static assets here
-# STATICFILES_DIRS = [
-#     join(PROJECT_ROOT, 'static'),
-# ]
-
-# look for templates here
-# This is an internal setting, used in the TEMPLATES directive
 PROJECT_TEMPLATES = [
     join(PROJECT_ROOT, 'templates'),
 ]
 
 # ##### DJANGO RUNNING CONFIGURATION ######################
 
-# the default WSGI application
+
 WSGI_APPLICATION = '%s.wsgi.application' % SITE_NAME
 
-# the root URL configuration
 ROOT_URLCONF = '%s.urls' % SITE_NAME
 
-# the URL for static files
 STATIC_URL = '/static/'
 
-# the URL for media files
 MEDIA_URL = '/media/'
