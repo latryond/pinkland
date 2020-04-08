@@ -1444,6 +1444,10 @@ body {
     border: solid 0.5px pink;
 }
 
+.filter-list-wrapper {
+    position: sticky;
+}
+
 @media screen and (max-width: 797px) {
     .product-wrapper {
         grid-template-columns: 45% 45%;
@@ -1461,7 +1465,7 @@ body {
         width: 0;
         overflow: hidden;
         transition: .4s ease-in-out;
-        position: sticky;
+        position: fixed;
         z-index: 5;
         right: 0;
         top: 30vh;
