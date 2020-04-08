@@ -1379,7 +1379,7 @@ body {
 
 .product-container.center {
     position: sticky;
-    top: 10vh;
+    top: 70px;
     background: white;
     z-index: 5;
 }
