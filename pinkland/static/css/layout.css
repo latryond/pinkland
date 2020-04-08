@@ -639,7 +639,7 @@ h1 {
     z-index: 2;
     position: absolute;
     left: 40%;
-    bottom: 5vh;
+    bottom: 50px;
 }
 
 .fnc-slide__heading {
@@ -915,6 +915,7 @@ body {
     perspective: 1500px;
     background: #000;
     top: 10vh;
+    z-index: 5;
 }
 
 .demo-cont__credits {
