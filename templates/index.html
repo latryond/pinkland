@@ -1,11 +1,9 @@
 {% extends "base.html" %} {% load static %} {% block content %} 
 {% load discount%}
-<!-- 
-Please note, that you can apply .m--global-blending-active to .fnc-slider 
-to enable blend-mode for all background-images or apply .m--blend-bg-active
-to some specific slides (.fnc-slide). It's disabled by default in this demo,
-because it requires specific images, where more than 50% of bg is transparent or monotone
--->
+
+<style>
+
+</style>
 <div class="demo-cont">
     <!-- slider start -->
     <div class="fnc-slider example-slider">
@@ -106,30 +104,47 @@ because it requires specific images, where more than 50% of bg is transparent or
     <!-- slider end -->
 </div>
 <div class="container">
-<div><h1>最新產品</h1></div>
-
-<div class="product-wrapper" style="">
-  {% for obj in latest_product %}
-    <div class="product" style="">
-      <a href="{% url 'product_detail' obj.id %}">
-        <img class="" style="" src="{{obj.thumbnail.url}}" alt="">
-        <div class="product-overlay">
-            <h3 class="">{{obj.name}}</h3>
-            <div style="display:flex;">
-            {% if obj.discount != 0 %}
-              <h3 class="is_discount">$ {{obj.price}}</h3>
-              <h3 class="">$ {% discount obj.price obj.discount %}</h3>
-            {% else %}
-              <h3 class="">$ {{obj.price}}</h3>
-            {% endif %}
+    <div><h1>最新產品</h1></div>
+    <div class="product-wrapper" style="">
+    {% for obj in latest_product %}
+        <div class="product" style="">
+        <a href="{% url 'product_detail' obj.id %}">
+            <img class="" style="" src="{{obj.thumbnail.url}}" alt="">
+            <div class="product-overlay">
+                <h3 class="">{{obj.name}}</h3>
+                <div style="display:flex;">
+                {% if obj.discount != 0 %}
+                <h3 class="is_discount">$ {{obj.price}}</h3>
+                <h3 class="" style="color: rebeccapurple;
+        font-weight: 400;">$ {% discount obj.price obj.discount %}</h3>
+                {% else %}
+                <h3 class="">$ {{obj.price}}</h3>
+                {% endif %}
+                </div>
+                
             </div>
-            
+            </a>
         </div>
-        </a>
+        {% endfor %}
+    </div> 
+    <div><h1>最新產品</h1></div>
+    <div class="post-wrapper">
+    {% for igpost in igposts.data|slice:":2" %}
+    <div class="post" >
+    <div class="caption-wrapper"><p style="margin:0;padding:10px;white-space: pre-line;">{{igpost.caption}}</p>
+    <a href="https://www.instagram.com/pinkland_crystalshop/">查看更多</a>
     </div>
-    {% endfor %}
-</div> 
-
+    <div class="media-wrapper"><img src="{{igpost.media_url}}" style="width: 80vh;border: solid 5px pink;"> </div>
+    </div>
+    {%endfor%}
+    </div>
 
 </div>
+<script>
+{% comment %} $( ".posts" ).each(function(index) {
+    $(this).on("click", function(){
+        $(this).
+    });
+}); {% endcomment %}
+</script>
 {% endblock %}

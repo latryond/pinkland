@@ -38,7 +38,7 @@
 </div>
 
 
-   {% comment %} <nav aria-label="Page navigation" class="p-3">
+   <nav class="page__nav">
       <ul class="pagination justify-content-center">
          {% for page in page_obj.paginator.page_range %}
          {% if page_obj.number == page %}
@@ -48,5 +48,5 @@
          {% endif %}
          {% endfor %}
       </ul>
-   </nav> {% endcomment %}
+   </nav> 
 {% endblock content%}

@@ -6,6 +6,46 @@ a {
     text-decoration: none;
 }
 
+.page__nav {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page__nav ul li {
+    float: left;
+    width: 2rem;
+    height: 2rem;
+    background: pink;
+    border: solid 1px pink;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: pink;
+    font-weight: 600;
+}
+
+.page__nav ul li.active {
+    background: pink;
+    color: white;
+    cursor: pointer;
+}
+
+.page__nav ul li a {
+    color: pink;
+}
+
+.page__nav ul li.active a {
+    color: white;
+}
+
+.page__nav ul li:hover {
+    background: pink;
+    color: white;
+    cursor: pointer;
+}
+
 h1:after {
     content: '';
     width: 80%;
@@ -1359,6 +1399,51 @@ body {
     cursor: pointer;
 }
 
+.post {
+    display: flex;
+    width: 90%;
+    margin: 3% 5%;
+    position: relative;
+    padding: 15px;
+}
+
+.caption-wrapper:before {
+    content: '';
+    border-top: solid 8px;
+    border-left: solid 8px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3vw;
+    height: 3vw;
+    border-color: brown;
+}
+
+.caption-wrapper:after {
+    content: '';
+    border-bottom: solid 10px;
+    border-right: solid 10px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 3vw;
+    height: 3vw;
+    border-color: brown;
+}
+
+.caption-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.caption-wrapper a {
+    width: fit-content;
+    padding: 10px;
+    margin: 10px auto;
+    background: white;
+    border: solid 0.5px pink;
+}
+
 @media screen and (max-width: 797px) {
     .product-wrapper {
         grid-template-columns: 45% 45%;
@@ -1394,6 +1479,11 @@ body {
     }
     .filter-list-wrapper.open {
         max-height: 100%;
+    }
+    .post {
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
     }
 }
 

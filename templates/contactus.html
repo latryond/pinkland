@@ -1,21 +1,49 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container-fluid" style="background:white;">
+<style>
 
-<div style="position: relative;display:flex;justify-content:center;align-items:center;padding-top:5%;"><span style="background:black;display:block;height:2px;    width: -webkit-fill-available;"></span><div class="py-1 px-5 text-center" style="    width: -webkit-fill-available;"><h2>聯絡我們</h2></div><span style="background:black;display:block;height:2px;    width: -webkit-fill-available;"></span></div>
-
-
-<div class="row" style="height:auto;padding:3%;">
-{% comment %} <div class="col-md-6 col-sm-12" > {% endcomment %}
-<div id="map" class="col-md-8 col-sm-12" style="min-height:500px;"></div>
-{% comment %} </div> {% endcomment %}
-<div class="col col-md-4 col-sm-12">
-<h5 class="address py-3"><span class="pr-3"><i class="fas fa-store-alt pr-3"></i>門市 :</span>旺角W商場3樓306 4-10</h5> 
-<h5 class="phone py-3"><span class="pr-3"><i class="fas fa-phone pr-3"></i>電話 :</span>5622 4180</h5> 
-<h5 class="email py-3"><span class="pr-3"><i class="fas fa-envelope-open pr-3"></i>電郵 :</span>info@pinkland.com.hk</h5> 
+</style>
+<div class="product-container center">
+<span style="padding: 1%;font-size: 2.5rem;border-bottom: solid 2px pink;margin: 10px 0;width:fit-content;">聯絡我們</span>
 </div>
-</div>
+<div class="" style="background:white;">
+
+
+
+
+<div class="row" style="height:auto;padding:3%; display:flex;flex-direction:column;">
+<div id="map" class="" style="height:50vh;"></div>
+
+
+<div class="" style="font-family: roboto;font-size: 1.7rem;float:left; width:50%;padding:0 3% 5%">
+  
+  <h1 style="font-weight: 300;">門市資料</h1>
+  <table style="font-weight: 300;padding:1% 0%">
+  <tr>
+  <th><i class="fas fa-store-alt " style="margin-right:10px;color: coral;" ></i></th>
+  <td>門市:</td>
+  <td>旺角W商場3樓306 4-10</td>
+
+  </tr>
+    <tr>
+  <th><i class="fas fa-phone " style="margin-right:10px;color: coral;" ></i></th>
+  <td>電話:</td>
+  <td>5622 4180</td>
+
+  </tr>
+    <tr>
+  <th><i class="fas fa-envelope " style="margin-right:10px;color: coral;" ></i></th>
+  <td>電郵:</td>
+  <td>info@pinkland.com.hk</td>
+
+  </tr>
+
+
+  </table>
+  
+
 </div>    
+</div>
 <script>
 // Initialize and add the map
 function initMap() {
