@@ -1,4 +1,4 @@
-#!/Users/rockpigeon/Documents/GitHub/pinkland/venv/bin/python
+#!/Users/rockpigeon/Documents/GitHub/pinkland/venv/bin/python3.7
 from django.core import management
 
 if __name__ == "__main__":
