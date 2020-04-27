@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% load static %} {% block content %} 
+{% extends "base.html" %} {% load static %} {% block content %}
 {% load discount%}
 
 <style>
@@ -22,7 +22,7 @@
                                 <span style="font-size:1rem;">{{p.description}}</span>
                             </div>
 
-                        
+
                         </h2>
                     </div>
                 </div>
@@ -113,7 +113,7 @@
             <div class="product-overlay">
                 <h3 class="">{{obj.name}}</h3>
                 <div style="display:flex;">
-                {% if obj.discount != 0 %}
+                {% if obj.is_discount == True %}
                 <h3 class="is_discount">$ {{obj.price}}</h3>
                 <h3 class="" style="color: rebeccapurple;
         font-weight: 400;">$ {% discount obj.price obj.discount %}</h3>
@@ -121,12 +121,12 @@
                 <h3 class="">$ {{obj.price}}</h3>
                 {% endif %}
                 </div>
-                
+
             </div>
             </a>
         </div>
         {% endfor %}
-    </div> 
+    </div>
     <div><h1>最新產品</h1></div>
     <div class="post-wrapper">
     {% for igpost in igposts.data|slice:":2" %}
@@ -140,11 +140,4 @@
     </div>
 
 </div>
-<script>
-{% comment %} $( ".posts" ).each(function(index) {
-    $(this).on("click", function(){
-        $(this).
-    });
-}); {% endcomment %}
-</script>
 {% endblock %}

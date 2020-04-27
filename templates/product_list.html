@@ -24,16 +24,18 @@
         <img class="" style="" src="{{obj.thumbnail.url}}" alt="">
         <div class="product-overlay">
             <h3 class="">{{obj.name}}</h3>
-            {% if obj.discount != 0 %}
-            <h3 class="">$ {% discount obj.price obj.discount %}</h3>
-            {% else %}
-              <h3 class="">$ {{obj.price}}</h3>
-            {% endif %}
-            
+                {% if obj.is_discount == True %}
+                <h3 class="is_discount">$ {{obj.price}}</h3>
+                <h3 class="" style="color: rebeccapurple;
+        font-weight: 400;">$ {% discount obj.price obj.discount %}</h3>
+                {% else %}
+                <h3 class="">$ {{obj.price}}</h3>
+                {% endif %}
+
         </div>
         </a>
     </div>
-   {% endfor %} 
+   {% endfor %}
 </div>
 </div>
 
@@ -48,5 +50,5 @@
          {% endif %}
          {% endfor %}
       </ul>
-   </nav> 
+   </nav>
 {% endblock content%}

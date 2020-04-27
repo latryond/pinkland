@@ -115,12 +115,13 @@
     <div style="display:flex;align-items:center;"><span style="width: 100px;">產品描述:</span><p>{{object.description}}</p></div>
     <div>
         <span>售價 </span>
-        {% if obj.discount != 0 %}
-            <span class="is_discount">$ {{object.price}}</span>
-            <span class="" style="">$ {% discount object.price object.discount %}</span>
-        {% else %}
-            <span class="">$ {{obj.price}}</span>
-        {% endif %}
+                {% if obj.is_discount == True %}
+                <h3 class="is_discount">$ {{obj.price}}</h3>
+                <h3 class="" style="color: rebeccapurple;
+        font-weight: 400;">$ {% discount obj.price obj.discount %}</h3>
+                {% else %}
+                <h3 class="">$ {{obj.price}}</h3>
+                {% endif %}
     </div>
 
     </div>

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Product, ProductImages, Poster, ProductMaterial, ProductCategory, ProductFunction
-
+import logging
 
 class ProductImageInline(admin.TabularInline):
     model = ProductImages
@@ -11,6 +11,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ('name', 'categ', 'price',)
     ordering = ('name', 'categ', 'price')
     search_fields = ('name', 'categ')
+    fields = (('discount','is_discount'),'name','functions','material','categ','price','thumbnail','description',)
     inlines = [ProductImageInline, ]
 
 
